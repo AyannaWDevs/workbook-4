@@ -1,12 +1,12 @@
 public class Room {
     boolean isClean;
-    boolean isAvailable;
+    boolean isOccupied;
     int numberOfbeds;
     // create constructor
 
-    public Room(boolean isClean, boolean isAvailable, int numberOfbeds) {
+    public Room(boolean isClean, boolean isOccupied, int numberOfbeds) {
         this.isClean = isClean;
-        this.isAvailable = isAvailable;
+        this.isOccupied = isOccupied;
         this.numberOfbeds = numberOfbeds;
     }
 }
