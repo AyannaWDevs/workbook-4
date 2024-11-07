@@ -5,6 +5,8 @@ import java.io.FileReader;
 public class DealershipFileManager {
     public static void main(String[] args) {
         new DealershipFileManager().getDealership();
+        UserInterface ui = new UserInterface();
+        ui.display();
     }
     private static final String filePath="src/main/resources/inventory.csv";
     String delimiter = "[|]";
@@ -27,7 +29,6 @@ public class DealershipFileManager {
                myDealership.addVehicle(vehicle);
                System.out.println(vehicle);
            }
-           //for loop to split  while br.readline() !null
        }
        catch(Exception e){
 
