@@ -1,9 +1,12 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface{
-public UserInterface() {
+    Dealership dealership;
+
+    public UserInterface() {
 }
     public void display () {
         init();
@@ -12,12 +15,12 @@ public UserInterface() {
         System.out.println("""
                 Please enter the number corresponding to your choice:
                 1) List all Vehicles
-                2) Search for vehicles by price 
+                2) Search for vehicles by price
                 3) Search for Vehicles by make / model
                 4) Search vehicles by color
                 5) Search for vehicles by mileage
                 6) Search vehicles by type (car, truck, SUV, van)
-                7) Search vehicles by year 
+                7) Search vehicles by year
                 8) Add a vehicle
                 9) Remove a vehicle
                 10) Sell/Lease a Vehicle
@@ -60,14 +63,21 @@ public UserInterface() {
                     System.out.println("Exiting to main menu");
                     break;
                 default:
-                    System.out.println("Invalid input try again.");
+                    System.out.println("Invalid input, try again.");
             }
             // stops loop once "x" is input
-        } while (!userChoice.equalsIgnoreCase("x"));
+        } while (!userChoice.equalsIgnoreCase("X"));
         scanner.close();
     }
     private void init() {
+   DealershipFileManager fileManager = new DealershipFileManager();
+    this.dealership = fileManager.getDealership();
+}
+private void displayVehicles(ArrayList<Vehicle> inventory) {
+    for (Vehicle v : inventory) {
+        System.out.println(v);
     }
+}
    public void displaySellLeaseMenu() {
     }
     public void processGetByPriceRequest () {
@@ -89,7 +99,10 @@ public UserInterface() {
 
     }
     public void processGetAllVehiclesRequest () {
-
+        if (dealership != null) {
+            ArrayList<Vehicle> vehicles = this.dealership.getAllVehicles();
+            displayVehicles(vehicles);
+        }
     }
     public void processAddVehicleRequest () {
 
